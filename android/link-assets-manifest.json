@@ -1,0 +1,77 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/PublicSans-Black.otf",
+      "sha1": "ce75b8569c2d926708fca6279ddf522c73ce3d4a"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-BlackItalic.otf",
+      "sha1": "247a18f05832660c6b776997b3ce36459e4d8afb"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-Bold.otf",
+      "sha1": "ae7169f769aa156dabf2eb29c8a0e9db750b8364"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-BoldItalic.otf",
+      "sha1": "2ac65574f846103733aa6f3e85a1df8c8a9e7287"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-ExtraBold.otf",
+      "sha1": "23218e1a63c52297ab04e1bf6648755dbc2f649e"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-ExtraBoldItalic.otf",
+      "sha1": "f3d442869a3dcbd00ecf92e966ca33fec29f681d"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-ExtraLight.otf",
+      "sha1": "4795d07791304d042adc302bb4b35bbc43776edf"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-ExtraLightItalic.otf",
+      "sha1": "d607551a729de2ebcea5d4260f7fa3c0a8b3e537"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-Italic.otf",
+      "sha1": "53f180f9bedb0b5660cadc4e56e9e3a0a29ccd5c"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-Light.otf",
+      "sha1": "7ddc41101299a4f3c03b96965f91ad0e79148313"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-LightItalic.otf",
+      "sha1": "1fe6fc9fd335f33abff631b76ac7379699c3180c"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-Medium.otf",
+      "sha1": "5b48fc291c337aefebd8aa876ac448e8b85e7691"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-MediumItalic.otf",
+      "sha1": "5c38f146a5c80681c82e1edeea8b06584a1fa052"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-Regular.otf",
+      "sha1": "47732902a20a1edec956a8c7b0a5fb44dc93b942"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-SemiBold.otf",
+      "sha1": "33004afa78480f510a88fd165cdfcf6685da477c"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-SemiBoldItalic.otf",
+      "sha1": "cb741bb15aeea036d85f3f02ff75b3c41ae96d93"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-Thin.otf",
+      "sha1": "9e4d04aa92d7ae7b640b567a50667d3a11ca9d38"
+    },
+    {
+      "path": "src/assets/fonts/PublicSans-ThinItalic.otf",
+      "sha1": "cf98dd6b9b88a88143c69e3b094aeb4355c06d52"
+    }
+  ]
+}

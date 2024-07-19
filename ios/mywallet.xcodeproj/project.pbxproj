@@ -12,9 +12,27 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		190504A0C8C949C29A98EEF8 /* PublicSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 804EE581548D48AAA8496A2F /* PublicSans-Regular.otf */; };
+		217D5D4F74B74F6D88594C09 /* PublicSans-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A6ED67B3355646CD8703A7EE /* PublicSans-Italic.otf */; };
+		2EE0786055534FD4AF598007 /* PublicSans-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D7CF361DDCE46CABBB94791 /* PublicSans-BlackItalic.otf */; };
+		356CBBA9D8F94C4C84C953DF /* PublicSans-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A48EB095ECF246F5A2C05B5B /* PublicSans-SemiBold.otf */; };
+		3AE25534093B4F41891616A0 /* PublicSans-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BD2BCDB22373448F8447287F /* PublicSans-ExtraBold.otf */; };
+		3B77E378057D47B19E9B98AB /* PublicSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AFC6FD9A280840F2BE7BEB1B /* PublicSans-Medium.otf */; };
+		42BA8BF7001D4E8A9287F186 /* PublicSans-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 296D40D618104E74A93C42E3 /* PublicSans-BoldItalic.otf */; };
+		4413DAEFDC254BE9930E16AE /* PublicSans-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 026BD631C02341FA8C32768C /* PublicSans-ExtraLight.otf */; };
+		4ADC63EFE46F4A38ABF2DBA9 /* PublicSans-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 429C0903C3BF42079B89FBA6 /* PublicSans-MediumItalic.otf */; };
 		7699B88040F8A987B510C191 /* libPods-mywallet-mywalletTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-mywallet-mywalletTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9A6D302EA3474F1492330356 /* PublicSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD256FBF61B94681B70F10FD /* PublicSans-Bold.otf */; };
+		C394504E759242DE87AE54CE /* PublicSans-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = C59D00BF6E1C4433865FA8E5 /* PublicSans-Thin.otf */; };
+		C77279A03C824616AD04A178 /* PublicSans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28AFEAAAA1BE4FCB8CD0C9FE /* PublicSans-Black.otf */; };
+		DF3574382C834482AE413171 /* PublicSans-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 06B53ACAFEC743AAB0D115A4 /* PublicSans-LightItalic.otf */; };
+		E7853DAA9E5D43CA9CEF51B7 /* PublicSans-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 951AA9973F4F49488B0D79F1 /* PublicSans-ExtraBoldItalic.otf */; };
+		EF5370D7F5FF40ABA797E669 /* PublicSans-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77E3F5CA89854076A604D5E4 /* PublicSans-ThinItalic.otf */; };
 		F30C808BD696802008CDA19D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 4F1198657905A0AA7A807308 /* PrivacyInfo.xcprivacy */; };
+		F5DF2BF0306B44FCB6298369 /* PublicSans-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D85D5F9669F4AD3993D98CD /* PublicSans-SemiBoldItalic.otf */; };
+		F7D78AE0BC7848F2B4D1DDC8 /* PublicSans-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9AB3418E815044F79D691F08 /* PublicSans-ExtraLightItalic.otf */; };
+		F9157128142E45C8A474BD14 /* PublicSans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 147A364CB2E3403BA7E15DD2 /* PublicSans-Light.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +49,9 @@
 		00E356EE1AD99517003FC87E /* mywalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mywalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* mywalletTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mywalletTests.m; sourceTree = "<group>"; };
+		026BD631C02341FA8C32768C /* PublicSans-ExtraLight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-ExtraLight.otf"; path = "../src/assets/fonts/PublicSans-ExtraLight.otf"; sourceTree = "<group>"; };
+		06B53ACAFEC743AAB0D115A4 /* PublicSans-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-LightItalic.otf"; path = "../src/assets/fonts/PublicSans-LightItalic.otf"; sourceTree = "<group>"; };
+		0D7CF361DDCE46CABBB94791 /* PublicSans-BlackItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-BlackItalic.otf"; path = "../src/assets/fonts/PublicSans-BlackItalic.otf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* mywallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mywallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = mywallet/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = mywallet/AppDelegate.mm; sourceTree = "<group>"; };
@@ -38,14 +59,29 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mywallet/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = mywallet/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = mywallet/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		147A364CB2E3403BA7E15DD2 /* PublicSans-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-Light.otf"; path = "../src/assets/fonts/PublicSans-Light.otf"; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-mywallet-mywalletTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mywallet-mywalletTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28AFEAAAA1BE4FCB8CD0C9FE /* PublicSans-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-Black.otf"; path = "../src/assets/fonts/PublicSans-Black.otf"; sourceTree = "<group>"; };
+		296D40D618104E74A93C42E3 /* PublicSans-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-BoldItalic.otf"; path = "../src/assets/fonts/PublicSans-BoldItalic.otf"; sourceTree = "<group>"; };
+		2D85D5F9669F4AD3993D98CD /* PublicSans-SemiBoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-SemiBoldItalic.otf"; path = "../src/assets/fonts/PublicSans-SemiBoldItalic.otf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-mywallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mywallet.debug.xcconfig"; path = "Target Support Files/Pods-mywallet/Pods-mywallet.debug.xcconfig"; sourceTree = "<group>"; };
+		429C0903C3BF42079B89FBA6 /* PublicSans-MediumItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-MediumItalic.otf"; path = "../src/assets/fonts/PublicSans-MediumItalic.otf"; sourceTree = "<group>"; };
 		4F1198657905A0AA7A807308 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = mywallet/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-mywallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mywallet.release.xcconfig"; path = "Target Support Files/Pods-mywallet/Pods-mywallet.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-mywallet-mywalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mywallet-mywalletTests.debug.xcconfig"; path = "Target Support Files/Pods-mywallet-mywalletTests/Pods-mywallet-mywalletTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-mywallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mywallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		77E3F5CA89854076A604D5E4 /* PublicSans-ThinItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-ThinItalic.otf"; path = "../src/assets/fonts/PublicSans-ThinItalic.otf"; sourceTree = "<group>"; };
+		804EE581548D48AAA8496A2F /* PublicSans-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-Regular.otf"; path = "../src/assets/fonts/PublicSans-Regular.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = mywallet/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-mywallet-mywalletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mywallet-mywalletTests.release.xcconfig"; path = "Target Support Files/Pods-mywallet-mywalletTests/Pods-mywallet-mywalletTests.release.xcconfig"; sourceTree = "<group>"; };
+		951AA9973F4F49488B0D79F1 /* PublicSans-ExtraBoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-ExtraBoldItalic.otf"; path = "../src/assets/fonts/PublicSans-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
+		9AB3418E815044F79D691F08 /* PublicSans-ExtraLightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-ExtraLightItalic.otf"; path = "../src/assets/fonts/PublicSans-ExtraLightItalic.otf"; sourceTree = "<group>"; };
+		A48EB095ECF246F5A2C05B5B /* PublicSans-SemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-SemiBold.otf"; path = "../src/assets/fonts/PublicSans-SemiBold.otf"; sourceTree = "<group>"; };
+		A6ED67B3355646CD8703A7EE /* PublicSans-Italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-Italic.otf"; path = "../src/assets/fonts/PublicSans-Italic.otf"; sourceTree = "<group>"; };
+		AD256FBF61B94681B70F10FD /* PublicSans-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-Bold.otf"; path = "../src/assets/fonts/PublicSans-Bold.otf"; sourceTree = "<group>"; };
+		AFC6FD9A280840F2BE7BEB1B /* PublicSans-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-Medium.otf"; path = "../src/assets/fonts/PublicSans-Medium.otf"; sourceTree = "<group>"; };
+		BD2BCDB22373448F8447287F /* PublicSans-ExtraBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-ExtraBold.otf"; path = "../src/assets/fonts/PublicSans-ExtraBold.otf"; sourceTree = "<group>"; };
+		C59D00BF6E1C4433865FA8E5 /* PublicSans-Thin.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PublicSans-Thin.otf"; path = "../src/assets/fonts/PublicSans-Thin.otf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -127,6 +163,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				B40A4DC3381348B0A52FBD64 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -140,6 +177,32 @@
 				00E356EE1AD99517003FC87E /* mywalletTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B40A4DC3381348B0A52FBD64 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				28AFEAAAA1BE4FCB8CD0C9FE /* PublicSans-Black.otf */,
+				0D7CF361DDCE46CABBB94791 /* PublicSans-BlackItalic.otf */,
+				AD256FBF61B94681B70F10FD /* PublicSans-Bold.otf */,
+				296D40D618104E74A93C42E3 /* PublicSans-BoldItalic.otf */,
+				BD2BCDB22373448F8447287F /* PublicSans-ExtraBold.otf */,
+				951AA9973F4F49488B0D79F1 /* PublicSans-ExtraBoldItalic.otf */,
+				026BD631C02341FA8C32768C /* PublicSans-ExtraLight.otf */,
+				9AB3418E815044F79D691F08 /* PublicSans-ExtraLightItalic.otf */,
+				A6ED67B3355646CD8703A7EE /* PublicSans-Italic.otf */,
+				147A364CB2E3403BA7E15DD2 /* PublicSans-Light.otf */,
+				06B53ACAFEC743AAB0D115A4 /* PublicSans-LightItalic.otf */,
+				AFC6FD9A280840F2BE7BEB1B /* PublicSans-Medium.otf */,
+				429C0903C3BF42079B89FBA6 /* PublicSans-MediumItalic.otf */,
+				804EE581548D48AAA8496A2F /* PublicSans-Regular.otf */,
+				A48EB095ECF246F5A2C05B5B /* PublicSans-SemiBold.otf */,
+				2D85D5F9669F4AD3993D98CD /* PublicSans-SemiBoldItalic.otf */,
+				C59D00BF6E1C4433865FA8E5 /* PublicSans-Thin.otf */,
+				77E3F5CA89854076A604D5E4 /* PublicSans-ThinItalic.otf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
@@ -249,6 +312,24 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				F30C808BD696802008CDA19D /* PrivacyInfo.xcprivacy in Resources */,
+				C77279A03C824616AD04A178 /* PublicSans-Black.otf in Resources */,
+				2EE0786055534FD4AF598007 /* PublicSans-BlackItalic.otf in Resources */,
+				9A6D302EA3474F1492330356 /* PublicSans-Bold.otf in Resources */,
+				42BA8BF7001D4E8A9287F186 /* PublicSans-BoldItalic.otf in Resources */,
+				3AE25534093B4F41891616A0 /* PublicSans-ExtraBold.otf in Resources */,
+				E7853DAA9E5D43CA9CEF51B7 /* PublicSans-ExtraBoldItalic.otf in Resources */,
+				4413DAEFDC254BE9930E16AE /* PublicSans-ExtraLight.otf in Resources */,
+				F7D78AE0BC7848F2B4D1DDC8 /* PublicSans-ExtraLightItalic.otf in Resources */,
+				217D5D4F74B74F6D88594C09 /* PublicSans-Italic.otf in Resources */,
+				F9157128142E45C8A474BD14 /* PublicSans-Light.otf in Resources */,
+				DF3574382C834482AE413171 /* PublicSans-LightItalic.otf in Resources */,
+				3B77E378057D47B19E9B98AB /* PublicSans-Medium.otf in Resources */,
+				4ADC63EFE46F4A38ABF2DBA9 /* PublicSans-MediumItalic.otf in Resources */,
+				190504A0C8C949C29A98EEF8 /* PublicSans-Regular.otf in Resources */,
+				356CBBA9D8F94C4C84C953DF /* PublicSans-SemiBold.otf in Resources */,
+				F5DF2BF0306B44FCB6298369 /* PublicSans-SemiBoldItalic.otf in Resources */,
+				C394504E759242DE87AE54CE /* PublicSans-Thin.otf in Resources */,
+				EF5370D7F5FF40ABA797E669 /* PublicSans-ThinItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
