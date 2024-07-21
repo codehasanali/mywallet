@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, SafeAreaView, Platform, Alert } from "react-native";
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import useBalanceStore from '../../store/balanceStore';
@@ -8,7 +8,15 @@ import { useNavigation } from '@react-navigation/native';
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
-const Income = () => {
+type IncomeEntry = {
+    id: string;
+    name: string;
+    amount: number;
+    date: string;
+    category: 'Income';
+};
+
+const Income: React.FC = () => {
     const [amount, setAmount] = useState('');
     const [name, setName] = useState('');
     const [date, setDate] = useState(new Date());
@@ -21,7 +29,7 @@ const Income = () => {
         if (!isNaN(parsedAmount) && amount.trim() !== '' && name.trim() !== '') {
             const dateString = date.toISOString();
 
-            const incomeEntry = {
+            const incomeEntry: IncomeEntry = {
                 id: generateId(), 
                 name: name.trim(),
                 amount: parsedAmount,
@@ -37,7 +45,7 @@ const Income = () => {
         }
     }
 
-    const onDateChange = (event, selectedDate) => {
+    const onDateChange = (_event: DateTimePickerEvent, selectedDate?: Date) => {
         setShowDatePicker(Platform.OS === 'ios');
         if (selectedDate) {
             setDate(selectedDate);
