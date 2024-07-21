@@ -1,41 +1,41 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, SafeAreaView, Platform } from "react-native";
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, SafeAreaView, Platform, Alert } from "react-native";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import useBalanceStore from '../../store/balanceStore';
 import { useNavigation } from '@react-navigation/native';
 
+const generateId = () => Math.random().toString(36).substr(2, 9);
+
 const Income = () => {
     const [amount, setAmount] = useState('');
+    const [name, setName] = useState('');
     const [date, setDate] = useState(new Date());
     const [showDatePicker, setShowDatePicker] = useState(false);
-    const { balance, income, setBalance, setIncome, expenses, addExpense } = useBalanceStore();
+    const { addIncome } = useBalanceStore();
     const navigation = useNavigation();
 
     const handleSave = () => {
         const parsedAmount = parseFloat(amount);
-        if (!isNaN(parsedAmount) && amount.trim() !== '') {
-            const newIncome = income + parsedAmount;
-            const newBalance = balance + parsedAmount;
-            setIncome(newIncome);
-            setBalance(newBalance);
+        if (!isNaN(parsedAmount) && amount.trim() !== '' && name.trim() !== '') {
+            const dateString = date.toISOString();
 
-            // Tarihi string olarak sakla
-            const dateString = date.toISOString(); // ISO formatı kullanabilirsiniz
-
-            // Yeni gider ekle
-            const expense = {
-                name: 'Income',
+            const incomeEntry = {
+                id: generateId(), 
+                name: name.trim(),
                 amount: parsedAmount,
+                date: dateString,
                 category: 'Income',
-                date: dateString, // Tarih bilgisini string formatında sakla
             };
 
-            addExpense(expense); // useBalanceStore'daki addExpense fonksiyonunu çağır
+            addIncome(incomeEntry);
+            Alert.alert('Başarılı', 'Gelir başarıyla eklendi.');
             navigation.goBack();
+        } else {
+            Alert.alert('Hata', 'Lütfen geçerli bir isim ve miktar girin.');
         }
-    };
+    }
 
     const onDateChange = (event, selectedDate) => {
         setShowDatePicker(Platform.OS === 'ios');
@@ -48,7 +48,16 @@ const Income = () => {
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
                 <View style={styles.inputGroup}>
-                    <Text style={styles.label}>Amount</Text>
+                    <Text style={styles.label}>Gelir Adı</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Gelir adı"
+                        value={name}
+                        onChangeText={setName}
+                    />
+                </View>
+                <View style={styles.inputGroup}>
+                    <Text style={styles.label}>Miktar</Text>
                     <TextInput
                         style={styles.input}
                         placeholder="0"
@@ -58,7 +67,7 @@ const Income = () => {
                     />
                 </View>
                 <View style={styles.inputGroup}>
-                    <Text style={styles.label}>Date</Text>
+                    <Text style={styles.label}>Tarih</Text>
                     <TouchableOpacity
                         style={styles.dateInputContainer}
                         onPress={() => setShowDatePicker(true)}
@@ -79,7 +88,7 @@ const Income = () => {
                 </View>
             </View>
             <TouchableOpacity style={styles.addButton} onPress={handleSave}>
-                <Text style={styles.addButtonText}>Add money</Text>
+                <Text style={styles.addButtonText}>Gelir Ekle</Text>
             </TouchableOpacity>
         </SafeAreaView>
     );

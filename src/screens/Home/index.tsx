@@ -8,7 +8,7 @@ import { useAppNavigation } from '../../types/navigation';
 
 const HomeScreen: React.FC = () => {
     const { user, logout } = useAuthStore();
-    const { balance, income, expense, loadBalanceData } = useBalanceStore();
+    const { balance, income, expense, loadBalanceData, clearBalanceData } = useBalanceStore();
     const navigation = useAppNavigation();
 
     useEffect(() => {
@@ -16,11 +16,16 @@ const HomeScreen: React.FC = () => {
     }, [loadBalanceData]);
 
     const handleIncomePress = () => {
-        navigation.navigate('Income');
+        navigation.navigate('Gelir');
     };
 
     const handleExpensePress = () => {
-        navigation.navigate('Expense');
+        navigation.navigate('Harcama');
+    };
+
+    const handleLogout = async () => {
+        await clearBalanceData();
+        logout();
     };
 
     return (
@@ -32,7 +37,7 @@ const HomeScreen: React.FC = () => {
                     </Text>
                     <Text style={styles.subGreeting}>Finansal bilgilerin harika!</Text>
                 </View>
-                <TouchableOpacity onPress={logout}>
+                <TouchableOpacity onPress={handleLogout}>
                     <FontAwesomeIcon icon={faRightFromBracket} size={24} color="#000" />
                 </TouchableOpacity>
             </View>

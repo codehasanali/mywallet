@@ -11,9 +11,9 @@ import Expense from '../screens/Expense';
 
 export type RootStackParamList = {
     Login: undefined;
-    Home: undefined;
-    Income: undefined;
-    Expense: undefined
+    Anasayfa: undefined;
+    Gelir: undefined;
+    Harcama: undefined
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -40,7 +40,7 @@ export default function Stacks() {
             {user ? (
                 <Stack.Screen
 
-                    name="Home" component={UserTabs}
+                    name="Anasayfa" component={UserTabs}
                     options={{
                         headerShown: false,
                     }}
@@ -48,10 +48,14 @@ export default function Stacks() {
 
                 />
             ) : (
-                <Stack.Screen name="Login" component={LoginScreen} />
+                <Stack.Screen name="Login"
+                    options={{
+                        headerShown: false,
+                    }}
+                    component={LoginScreen} />
             )}
             <Stack.Screen
-                name="Income"
+                name="Gelir"
                 component={Income}
                 options={({ navigation }) => ({
                     headerShown: true,
@@ -62,7 +66,7 @@ export default function Stacks() {
                 })}
             />
             <Stack.Screen
-                name="Expense"
+                name="Harcama"
                 component={Expense}
                 options={({ navigation }) => ({
                     headerShown: true,

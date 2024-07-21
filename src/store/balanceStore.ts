@@ -1,11 +1,12 @@
 import { create } from 'zustand';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-interface ExpenseItem {
+export interface ExpenseItem {
+    id: string;
     name: string;
     amount: number;
-    category: string;
     date: string;
+    category: string;
 }
 
 interface BalanceState {
@@ -17,8 +18,10 @@ interface BalanceState {
     setIncome: (amount: number) => void;
     setExpense: (amount: number) => void;
     addExpense: (expense: ExpenseItem) => void;
+    addIncome: (incomeEntry: ExpenseItem) => void;
     removeExpense: (index: number) => void;
     loadBalanceData: () => Promise<void>;
+    clearBalanceData: () => Promise<void>;
 }
 
 const saveBalanceData = async (balance: number, income: number, expense: number, expenses: ExpenseItem[]) => {
@@ -63,6 +66,24 @@ const useBalanceStore = create<BalanceState>((set) => ({
             balance: updatedBalance,
         };
     }),
+    addIncome: (incomeEntry: Omit<ExpenseItem, 'id'>) => set((state) => {
+        const newIncome: ExpenseItem = {
+            ...incomeEntry,
+            id: Math.random().toString(36).substring(7), // Generating a unique ID for the new income entry
+        };
+
+        const updatedExpenses = [...state.expenses, newIncome];
+        const updatedIncome = state.income + newIncome.amount;
+        const updatedBalance = state.balance + newIncome.amount;
+
+        saveBalanceData(updatedBalance, updatedIncome, state.expense, updatedExpenses);
+
+        return {
+            income: updatedIncome,
+            balance: updatedBalance,
+            expenses: updatedExpenses,
+        };
+    }),
     removeExpense: (index: number) => set((state) => {
         const removedExpense = state.expenses[index];
         const updatedExpenses = state.expenses.filter((_, i) => i !== index);
@@ -93,13 +114,26 @@ const useBalanceStore = create<BalanceState>((set) => ({
             const income = parseFloat(await AsyncStorage.getItem('income') || '0');
             const expense = parseFloat(await AsyncStorage.getItem('expense') || '0');
             const expensesString = await AsyncStorage.getItem('expenses');
-            const expenses = expensesString ? JSON.parse(expensesString).map((item: any) => ({
-                ...item,
-                date: new Date(item.date),
-            })) : [];
+            const expenses: ExpenseItem[] = expensesString ? JSON.parse(expensesString) : [];
             set({ balance, income, expense, expenses });
         } catch (error) {
             console.error('Load balance data error:', error);
+        }
+    },
+    clearBalanceData: async () => {
+        try {
+            await AsyncStorage.removeItem('balance');
+            await AsyncStorage.removeItem('income');
+            await AsyncStorage.removeItem('expense');
+            await AsyncStorage.removeItem('expenses');
+            set({
+                balance: 0,
+                income: 0,
+                expense: 0,
+                expenses: [],
+            });
+        } catch (error) {
+            console.error('Clear balance data error:', error);
         }
     },
 }));
