@@ -7,8 +7,8 @@ import { faArrowUp, faArrowDown, faCalendarDay, faCalendarWeek, faCalendarAlt, f
 
 const History = () => {
     const { expenses, income, expense, loadBalanceData } = useBalanceStore();
-    const [viewType, setViewType] = useState('daily');
-    const [groupedData, setGroupedData] = useState({});
+    const [viewType, setViewType] = useState<'daily' | 'weekly' | 'monthly'>('daily');
+    const [groupedData, setGroupedData] = useState<{ [key: string]: { total: number; items: any[] } }>({});
 
     useEffect(() => {
         loadBalanceData();
@@ -19,10 +19,10 @@ const History = () => {
         setGroupedData(grouped);
     }, [expenses, viewType]);
 
-    const groupExpensesByPeriod = (expenses, viewType) => {
+    const groupExpensesByPeriod = (expenses: any[], viewType: 'daily' | 'weekly' | 'monthly') => {
         return expenses.reduce((acc, curr) => {
             const date = new Date(curr.date);
-            let key;
+            let key: string;
             switch (viewType) {
                 case 'daily':
                     key = date.toISOString().split('T')[0];
@@ -43,10 +43,10 @@ const History = () => {
             acc[key].total += curr.amount * (curr.category === 'Income' ? 1 : -1);
             acc[key].items.push(curr);
             return acc;
-        }, {});
+        }, {} as { [key: string]: { total: number; items: any[] } });
     };
 
-    const getCategoryIcon = (category) => {
+    const getCategoryIcon = (category: string) => {
         switch (category.toLowerCase()) {
             case 'shopping': return faShoppingCart;
             case 'food': return faUtensils;
@@ -56,12 +56,12 @@ const History = () => {
         }
     };
 
-    const renderListItem = ({ item }) => (
+    const renderListItem = ({ item }: { item: { period: string; total: number; items: any[] } }) => (
         <View style={styles.groupContainer}>
             <Text style={styles.groupTitle}>{item.period}</Text>
             <Text style={styles.groupTotal}>Toplam: ₺{item.total.toFixed(0)}</Text>
             {item.items.map((expense) => (
-                <View key={expense.id} style={styles.expenseItem}>
+                <View key={expense.id || expense.date} style={styles.expenseItem}>
                     <View style={styles.expenseInfo}>
                         <FontAwesomeIcon 
                             icon={expense.category === 'Income' ? faArrowUp : getCategoryIcon(expense.category)}
@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         padding: 15,
         marginBottom: 20,
+        backgroundColor: '#FFFFFF', 
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.1,
@@ -180,18 +181,8 @@ const styles = StyleSheet.create({
     activeTabText: {
         color: '#FFF',
     },
-    input: {
-        height: 40,
-        borderColor: '#E6E0F0',
-        borderWidth: 1,
-        borderRadius: 8,
-        paddingHorizontal: 10,
-        marginBottom: 20,
-        backgroundColor: '#F9F9F9',
-        color: '#512DA8',
-    },
     groupContainer: {
-        backgroundColor: '#ffffff',
+        backgroundColor: '#FFFFFF', 
         borderRadius: 16,
         padding: 15,
         marginBottom: 10,
@@ -204,13 +195,13 @@ const styles = StyleSheet.create({
         borderColor: '#E6E0F0',
     },
     groupTitle: {
-        fontSize: 20, // Increased font size
-        fontWeight: '700', // Slightly bolder font weight
+        fontSize: 20, 
+        fontWeight: '700', 
         color: '#512DA8',
         marginBottom: 5,
     },
     groupTotal: {
-        fontSize: 18, // Slightly larger font size
+        fontSize: 18, 
         color: '#757575',
         marginBottom: 10,
     },
@@ -218,7 +209,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingVertical: 12, // Increased padding for better spacing
+        paddingVertical: 12, 
         borderBottomWidth: 1,
         borderBottomColor: '#E6E0F0',
         borderRadius: 8,
@@ -230,15 +221,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     expenseTextContainer: {
-        marginLeft: 12, // Increased margin for better spacing
+        marginLeft: 12, 
     },
     expenseName: {
-        fontSize: 18, // Slightly larger font size
+        fontSize: 18,
         fontWeight: '600',
         color: '#512DA8',
     },
     expenseDate: {
-        fontSize: 15, // Slightly larger font size
+        fontSize: 15, 
         color: '#757575',
     },
     expenseAmount: {
@@ -249,17 +240,15 @@ const styles = StyleSheet.create({
     incomeAmount: {
         color: '#4CAF50',
     },
-   
     emptyState: {
         justifyContent: 'center',
         alignItems: 'center',
-        height: 100,
+        marginTop: 40,
     },
     emptyStateText: {
-        fontSize: 16,
+        fontSize: 18,
         color: '#757575',
     },
 });
-
 
 export default History;

@@ -12,7 +12,6 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import moment from 'moment';
 import 'moment/locale/tr';
 
-// Define spending limits for each category
 const categoryLimits: { [key: string]: number } = {
     "Konaklama": 1000,
     "Dışarıda Yemek": 500,
@@ -23,6 +22,18 @@ const categoryLimits: { [key: string]: number } = {
     "Spor": 100,
     "Tatil": 1500,
     "Diğer": 100,
+};
+
+const categoryTargets: { [key: string]: number } = {
+    "Konaklama": 5,
+    "Dışarıda Yemek": 10,
+    "Alışveriş": 7,
+    "Eğlence": 3,
+    "Ulaşım": 4,
+    "Hediye": 2,
+    "Spor": 6,
+    "Tatil": 8,
+    "Diğer": 10
 };
 
 const categories = [
@@ -62,21 +73,24 @@ const HarcamaYoneticisi: React.FC = () => {
         setSelectedDate(currentDate);
     };
 
+    const getTotalExpenseForCategory = (category: Category): number => {
+        return expenses
+            .filter(expense => expense.category === category)
+            .reduce((total, expense) => total + expense.amount, 0);
+    };
+
     const harcamaEkle = () => {
         const miktarNum = parseFloat(miktar);
 
-        console.log('Harcama Ekle triggered');
-        console.log(`Isim: ${isim}, Miktar: ${miktarNum}, Kategori: ${kategori}`);
-
         if (isim.trim() && !isNaN(miktarNum)) {
             const limit = categoryLimits[kategori];
-            console.log(`Limit for ${kategori}: ₺${limit}`);
+            const target = categoryTargets[kategori];
+            const totalExpense = getTotalExpenseForCategory(kategori);
 
-            if (miktarNum > limit) {
-                console.log(`Miktar ₺${miktarNum} exceeds limit`);
+            if (miktarNum + totalExpense > limit) {
                 Alert.alert(
                     'Limit Aşıldı',
-                    `Bu kategorideki limit ₺${limit} olup, girdiğiniz miktar ₺${miktarNum} limitin üzerinde. Devam etmek istiyor musunuz?`,
+                    `Bu kategorideki limit ₺${limit} olup, mevcut toplam harcama ₺${totalExpense} ve girdiğiniz miktar ₺${miktarNum} limitin üzerinde. Devam etmek istiyor musunuz?`,
                     [
                         {
                             text: 'Hayır',
@@ -85,37 +99,37 @@ const HarcamaYoneticisi: React.FC = () => {
                         {
                             text: 'Evet',
                             onPress: () => {
-                                console.log('Adding expense with limit exceeded');
-                                const yeniHarcama: Expense = {
-                                    name: isim.trim(),
-                                    amount: miktarNum,
-                                    category: kategori,
-                                    date: selectedDate.toISOString(),
-                                };
-                                addExpense(yeniHarcama);
-                                setIsim('');
-                                setMiktar('');
-                                setSelectedDate(new Date());
+                                addExpenseToStore();
                             },
                         },
                     ]
                 );
             } else {
-                console.log(`Miktar ₺${miktarNum} within limit`);
-                const yeniHarcama: Expense = {
-                    name: isim.trim(),
-                    amount: miktarNum,
-                    category: kategori,
-                    date: selectedDate.toISOString(),
-                };
-                addExpense(yeniHarcama);
-                setIsim('');
-                setMiktar('');
-                setSelectedDate(new Date());
+                addExpenseToStore();
+            }
+
+            if (getTotalExpenseForCategory(kategori) + 1 >= target) {
+                Alert.alert(
+                    'Hedef Başarıyla Tamamlandı',
+                    `Bu kategorideki harcama hedefinizden daha yüksek!`,
+                );
             }
         } else {
             Alert.alert('Lütfen geçerli bir isim ve miktar girin.');
         }
+    };
+
+    const addExpenseToStore = () => {
+        const yeniHarcama: Expense = {
+            name: isim.trim(),
+            amount: parseFloat(miktar),
+            category: kategori,
+            date: selectedDate.toISOString(),
+        };
+        addExpense(yeniHarcama);
+        setIsim('');
+        setMiktar('');
+        setSelectedDate(new Date());
     };
 
     const getCategoryIcon = (category: Category): IconDefinition => {
