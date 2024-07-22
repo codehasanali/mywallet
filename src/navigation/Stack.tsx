@@ -8,12 +8,14 @@ import LoginScreen from '../screens/Login';
 import Income from '../screens/Income';
 import UserTabs from './UserTabs';
 import Expense from '../screens/Expense';
+import BudgetScreen from '../screens/Budget';
 
 export type RootStackParamList = {
     Login: undefined;
     Anasayfa: undefined;
     Gelir: undefined;
     Harcama: undefined
+    Bütçe:undefined
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -68,6 +70,17 @@ export default function Stacks() {
             <Stack.Screen
                 name="Harcama"
                 component={Expense}
+                options={({ navigation }) => ({
+                    headerShown: true,
+                    headerBackVisible: false,
+                    headerLeft: () => (
+                        <CustomBackButton onPress={() => navigation.goBack()} />
+                    ),
+                })}
+            />
+             <Stack.Screen
+                name="Bütçe"
+                component={BudgetScreen}
                 options={({ navigation }) => ({
                     headerShown: true,
                     headerBackVisible: false,

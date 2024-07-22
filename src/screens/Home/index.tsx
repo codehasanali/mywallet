@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { View, TouchableOpacity, StyleSheet, Text, SafeAreaView, Image } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Text, SafeAreaView, Image, ScrollView } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faBell, faPlus, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faRightFromBracket, faArrowUp, faArrowDown, faChartPie, faWallet, faFileInvoice } from '@fortawesome/free-solid-svg-icons';
 import useAuthStore from '../../store/authStore';
 import useBalanceStore from '../../store/balanceStore';
 import { useAppNavigation } from '../../types/navigation';
@@ -15,52 +15,72 @@ const HomeScreen: React.FC = () => {
         loadBalanceData();
     }, [loadBalanceData]);
 
-    const handleIncomePress = () => {
-        navigation.navigate('Gelir');
-    };
-
-    const handleExpensePress = () => {
-        navigation.navigate('Harcama');
-    };
-
+    const handleIncomePress = () => navigation.navigate('Gelir');
+    const handleExpensePress = () => navigation.navigate('Harcama');
     const handleLogout = async () => {
         await clearBalanceData();
         logout();
     };
 
+    const formatNumber = (num: number) => {
+        return new Intl.NumberFormat('tr-TR').format(num);
+    };
+
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.header}>
-                <View>
-                    <Text style={styles.greeting}>
-                        Merhaba, <Text style={styles.name}>{user || 'Kullanıcı'}</Text>!
-                    </Text>
-                    <Text style={styles.subGreeting}>Finansal bilgilerin harika!</Text>
+            <ScrollView>
+                <View style={styles.header}>
+                    <View>
+                        <Text style={styles.greeting}>Merhaba,</Text>
+                        <Text style={styles.name}>{user || 'Kullanıcı'}</Text>
+                    </View>
+                    <TouchableOpacity
+                        onPress={handleLogout}
+                        style={styles.logoutButton}
+                        accessibilityLabel="Çıkış Yap"
+                    >
+                        <FontAwesomeIcon icon={faRightFromBracket} size={20} color="" />
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity onPress={handleLogout}>
-                    <FontAwesomeIcon icon={faRightFromBracket} size={24} color="#000" />
-                </TouchableOpacity>
-            </View>
-            <View style={styles.balanceCard}>
-                <Image
-                    source={{ uri: `https://gravatar.com/avatar/${user || 'default'}` }}
-                    style={styles.avatar}
-                />
-                <Text style={styles.balanceLabel}>Mevcut bakiyeniz</Text>
-                <Text style={styles.balanceAmount}>${balance.toFixed(2)}</Text>
-            </View>
-            <View style={styles.transactionCards}>
-                <TouchableOpacity style={styles.incomeCard} onPress={handleIncomePress}>
-                    <Text style={styles.cardLabel}>Gelir</Text>
-                    <Text style={styles.cardAmount}>${income.toFixed(2)}</Text>
-                    <FontAwesomeIcon icon={faPlus} size={20} color="#FFF" style={styles.plusIcon} />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.expenseCard} onPress={handleExpensePress}>
-                    <Text style={styles.cardLabel}>Harcama</Text>
-                    <Text style={styles.cardAmount}>${expense.toFixed(2)}</Text>
-                    <FontAwesomeIcon icon={faPlus} size={20} color="#FFF" style={styles.plusIcon} />
-                </TouchableOpacity>
-            </View>
+
+                <View style={styles.balanceCard}>
+                    <Text style={styles.balanceLabel}>Toplam Bakiye</Text>
+                    <Text style={styles.balanceAmount}>₺{formatNumber(balance)}</Text>
+                    <Image
+                        source={{ uri: 'https://www.w3schools.com/w3images/avatar2.png' }}
+                        style={styles.avatar}
+                    />
+                </View>
+
+                <View style={styles.transactionCards}>
+                    <TouchableOpacity
+                        style={[styles.card, styles.incomeCard]}
+                        onPress={handleIncomePress}
+                        accessibilityLabel="Gelir Bilgileri"
+                    >
+                        <View style={[styles.iconContainer, styles.incomeIconContainer]}>
+                            <FontAwesomeIcon icon={faArrowUp} size={20} color="#00A86B" />
+                        </View>
+                        <View>
+                            <Text style={styles.cardLabel}>Gelir</Text>
+                            <Text style={[styles.cardAmount, styles.incomeAmount]}>₺{formatNumber(income)}</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={[styles.card, styles.expenseCard]}
+                        onPress={handleExpensePress}
+                        accessibilityLabel="Harcama Bilgileri"
+                    >
+                        <View style={[styles.iconContainer, styles.expenseIconContainer]}>
+                            <FontAwesomeIcon icon={faArrowDown} size={20} color="#FD3C4A" />
+                        </View>
+                        <View>
+                            <Text style={styles.cardLabel}>Harcama</Text>
+                            <Text style={[styles.cardAmount, styles.expenseAmount]}>₺{formatNumber(expense)}</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
         </SafeAreaView>
     );
 };
@@ -68,43 +88,40 @@ const HomeScreen: React.FC = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F6F6F6',
+        backgroundColor: '#FAFAFA',
+        paddingHorizontal: 20,
     },
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: 16,
+        marginTop: 20,
+        marginBottom: 30,
     },
     greeting: {
-        fontSize: 24,
-        fontFamily: 'PublicSans-Regular',
+        fontSize: 16,
+        color: '#91919F',
     },
     name: {
-        color: '#7F3DFF',
-        fontFamily: 'PublicSans-Bold',
+        fontSize: 24,
         fontWeight: 'bold',
+        color: '#161719',
     },
-    subGreeting: {
-        fontSize: 14,
-        color: '#91919F',
-        marginTop: 4,
+    logoutButton: {
+        padding: 10,
+        backgroundColor: '#F1E6FF',
+        borderRadius: 12,
     },
     balanceCard: {
         backgroundColor: '#7F3DFF',
         borderRadius: 24,
         padding: 24,
-        margin: 16,
+        marginBottom: 24,
         alignItems: 'center',
-    },
-    avatar: {
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        marginBottom: 16,
+        position: 'relative',
     },
     balanceLabel: {
-        color: '#FFF',
+        color: '#E0D1FF',
         fontSize: 16,
         marginBottom: 8,
     },
@@ -113,39 +130,102 @@ const styles = StyleSheet.create({
         fontSize: 40,
         fontWeight: 'bold',
     },
+    avatar: {
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        position: 'absolute',
+        top: -30,
+        right: 24,
+        borderWidth: 4,
+        borderColor: '#FFF',
+    },
     transactionCards: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginHorizontal: 16,
+    },
+    card: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#FFF',
+        borderRadius: 20,
+        padding: 16,
+        flex: 1,
+        marginHorizontal: 6,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+    iconContainer: {
+        width: 48,
+        height: 48,
+        borderRadius: 24,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 12,
+    },
+    incomeIconContainer: {
+        backgroundColor: '#E6FFF3',
+    },
+    expenseIconContainer: {
+        backgroundColor: '#FFF2F2',
     },
     incomeCard: {
-        backgroundColor: '#1C0045',
-        borderRadius: 24,
-        padding: 16,
-        flex: 1,
-        marginRight: 8,
+        borderLeftWidth: 4,
+        borderLeftColor: '#00A86B',
     },
     expenseCard: {
-        backgroundColor: '#6F12F5',
-        borderRadius: 24,
-        padding: 16,
-        flex: 1,
-        marginLeft: 8,
+        borderLeftWidth: 4,
+        borderLeftColor: '#FD3C4A',
     },
     cardLabel: {
-        color: '#FFF',
         fontSize: 14,
-        marginBottom: 8,
+        color: '#91919F',
+        marginBottom: 4,
     },
     cardAmount: {
-        color: '#FFF',
-        fontSize: 22,
+        fontSize: 18,
         fontWeight: 'bold',
     },
-    plusIcon: {
-        position: 'absolute',
-        right: 16,
-        top: 16,
+    incomeAmount: {
+        color: '#00A86B',
+    },
+    expenseAmount: {
+        color: '#FD3C4A',
+    },
+    sectionTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#161719',
+        marginTop: 24,
+        marginBottom: 16,
+    },
+    quickActions: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 24,
+    },
+    quickActionItem: {
+        alignItems: 'center',
+        flex: 1,
+    },
+    quickActionIcon: {
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        backgroundColor: '#F1E6FF',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 8,
+    },
+    quickActionText: {
+        fontSize: 14,
+        color: '#7F3DFF',
     },
 });
 

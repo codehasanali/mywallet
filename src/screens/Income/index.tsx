@@ -4,7 +4,11 @@ import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/dat
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import useBalanceStore from '../../store/balanceStore';
-import { useNavigation } from '@react-navigation/native';
+import { useAppNavigation } from "../../types/navigation";
+import moment from 'moment'
+import 'moment/locale/tr'  
+moment.locale('tr')
+
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
@@ -22,7 +26,7 @@ const Income: React.FC = () => {
     const [date, setDate] = useState(new Date());
     const [showDatePicker, setShowDatePicker] = useState(false);
     const { addIncome } = useBalanceStore();
-    const navigation = useNavigation();
+    const navigation = useAppNavigation();
 
     const handleSave = () => {
         const parsedAmount = parseFloat(amount);

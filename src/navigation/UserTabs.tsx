@@ -2,8 +2,9 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/Home';
 import History from '../screens/History';
+import BudgetScreen from '../screens/Budget';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faHome, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faCalendarAlt, faBullseye } from '@fortawesome/free-solid-svg-icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,17 +15,25 @@ const TeacherTabs = () => {
                 headerShown: false,
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
+                    let iconColor = color;
 
+                    // Belirli tab'lar için ikonları ayarla
                     if (route.name === 'Ana Sayfa') {
                         iconName = faHome;
                     } else if (route.name === 'Tarih') {
                         iconName = faCalendarAlt;
+                    } else if (route.name === 'Hedef') {
+                        iconName = faBullseye;
                     }
 
-                    // You can return any component that you like here!
-                    return <FontAwesomeIcon icon={iconName} size={size} color={color} />;
+                    // Seçili tab'ın rengi
+                    if (focused) {
+                        iconColor = 'blue'; 
+                    }
+
+                    return <FontAwesomeIcon icon={iconName} size={size} color={iconColor} />;
                 },
-                tabBarActiveTintColor: 'tomato',
+                tabBarActiveTintColor: 'blue',
                 tabBarInactiveTintColor: 'gray',
                 tabBarStyle: {
                     backgroundColor: '#f5f5f5',
@@ -47,6 +56,11 @@ const TeacherTabs = () => {
                 name='Tarih'
                 component={History}
                 options={{ title: 'Tarih' }}
+            />
+            <Tab.Screen
+                name='Hedef'
+                component={BudgetScreen}
+                options={{ title: 'Hedef' }}
             />
         </Tab.Navigator>
     );
