@@ -2,7 +2,9 @@
 
 MyWallet - Kişisel bütçenizi ve finansal yönetiminizi basit ve etkili bir şekilde yapmanızı sağlayan bir mobil uygulama.
 
-![GIF](assets/ekrankaydı.mp4)
+[![Yılan Oyunu Ekran Görüntüsü]](https://github.com/kullaniciadiniz/repository_adi/raw/main/assets/ekrankaydı.mp4)
+
+
 
 ## Özellikler
 - Teknolojiler
